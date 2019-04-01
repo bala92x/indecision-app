@@ -21,11 +21,17 @@
     color: white;
     font-size: $l-size;
     font-weight: bold;
-    margin-bottom: $xl-size;
+    margin-bottom: $m-size;
     padding: 2.4rem;
     width: 100%;
 }
 
 .big-button:disabled {
     opacity: .5;
+}
+
+@media (min-width: $desktop-breakpoint) {
+    .big-button {
+        margin-bottom: $xl-size;
+    }
 }

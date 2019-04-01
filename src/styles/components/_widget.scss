@@ -1,6 +1,6 @@
 .widget {
     background: $light-blue;
-    margin-bottom: $xl-size;
+    margin-bottom: $m-size;
 }
 
 .widget__message {
@@ -21,4 +21,10 @@
 
 .widget-header__title {
     margin: 0;
+}
+
+@media (min-width: $desktop-breakpoint) {
+    .widget {
+        margin-bottom: $xl-size;
+    }
 }
