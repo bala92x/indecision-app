@@ -11,13 +11,14 @@ export default class IndecisionApp extends React.Component {
         super(props)
         this.state = {
             options: props.options,
-            selectedOption: undefined
+            selectedOption: undefined,
+            modalIsOpen: false
         }
         this.handleDeleteOptions = this.handleDeleteOptions.bind(this)
         this.handleDeleteOption = this.handleDeleteOption.bind(this)
         this.handlePick = this.handlePick.bind(this)
         this.handleAddOption = this.handleAddOption.bind(this)
-        this.handleClearSelectedOption = this.handleClearSelectedOption.bind(this)
+        this.handleCloseModal = this.handleCloseModal.bind(this)
     }
 
     componentDidMount() {
@@ -56,7 +57,8 @@ export default class IndecisionApp extends React.Component {
         const option = this.state.options[randomNum]
 
         this.setState(() => ({
-            selectedOption: option
+            selectedOption: option,
+            modalIsOpen: true
         }))
     }
 
@@ -72,10 +74,16 @@ export default class IndecisionApp extends React.Component {
         }))
     }
 
-    handleClearSelectedOption() {
+    handleCloseModal() {
         this.setState(() => ({
-            selectedOption: undefined
+            modalIsOpen: false
         }))
+
+        setTimeout(() => {
+            this.setState(() => ({
+                selectedOption: undefined
+            }))
+        }, 200)
     }
 
     render() {
@@ -103,8 +111,9 @@ export default class IndecisionApp extends React.Component {
                     </section>
                 </main>
                 <OptionModal
+                    close={this.handleCloseModal}
+                    isOpen={this.state.modalIsOpen}
                     selectedOption={this.state.selectedOption}
-                    handleClearSelectedOption={this.handleClearSelectedOption}
                 />
             </React.Fragment>
         )
