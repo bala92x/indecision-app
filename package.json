@@ -4,8 +4,15 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "build": "webpack",
-        "dev": "webpack-dev-server"
+        "start": "node server/index.js",
+        "build:dev": "webpack",
+        "build:prod": "webpack -p --env production",
+        "dev": "webpack-dev-server",
+        "heroku-postbuild": "npm run build:prod"
+    },
+    "engines": {
+        "node": "10.15.3",
+        "npm": "6.4.1"
     },
     "author": "Budavölgyi Bálint",
     "license": "ISC",
@@ -16,6 +23,7 @@
         "babel-loader": "^8.0.5",
         "babel-preset-react": "^6.24.1",
         "css-loader": "^2.1.1",
+        "extract-text-webpack-plugin": "^4.0.0-beta.0",
         "node-sass": "^4.11.0",
         "normalize.css": "^8.0.1",
         "react": "^16.8.6",
@@ -26,5 +34,8 @@
         "webpack": "^4.29.6",
         "webpack-cli": "^3.3.0",
         "webpack-dev-server": "^3.2.1"
+    },
+    "dependencies": {
+        "express": "^4.16.4"
     }
 }
